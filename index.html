@@ -216,6 +216,17 @@
     </div>
   </div>
 
+  <div class="nav-menu">
+    <a href="#how-we-met">How We Met</a>
+    <a href="#events">Wedding Events</a>
+    <a href="#venue">Venue</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#wheretostay">Where to Stay</a>
+    <a href="#thingstodo">Things to Do</a>
+    <a href="#contacthelp">Contact Us</a>
+  </div>
+
   <div class="hero">
     <img src="img/logo-lg.png" alt="Wedding Logo" class="hero-logo" />
     <div id="countdown">💍 Loading countdown...</div>
@@ -273,7 +284,6 @@
     </div>
   </section>
 
-  <!-- How to Get There Section with Maps -->
   <section id="venue" data-aos="fade-up" style="padding: 40px 20px; background: #fafafa;">
     <h3>How to Get There</h3>
     <p>Join us at our wedding venue and be part of our celebration!</p>
@@ -373,24 +383,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
-    // Countdown Timer
-    const targetDate = new Date("Oct 2, 2025 09:30:00").getTime();
-    const x = setInterval(function() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "The big day has arrived!";
-      }
-    }, 1000);
+    // Show sections when they enter the viewport
+    window.addEventListener('load', function() {
+      const sections = document.querySelectorAll('section');
+      window.addEventListener('scroll', function() {
+        sections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            section.classList.add('visible');
+          }
+        });
+      });
+    });
+    // Function to toggle the menu
+    function toggleMenu() {
+      const menu = document.querySelector('.nav-menu');
+      menu.classList.toggle('show');
+    }
   </script>
 </body>
 </html>
