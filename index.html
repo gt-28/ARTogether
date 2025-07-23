@@ -45,12 +45,22 @@
       align-items: center;
       justify-content: center;
     }
+
+    @media (max-width: 768px) {
+      .hero {
+        background-attachment: scroll; /* Disable fixed background for mobile to avoid zooming */
+        background-position: center center; /* Center the image properly */
+        background-size: auto 100%; /* Scale the image proportionally for mobile */
+      }
+    }
+
     .down-arrow {
       position: absolute;
       bottom: 20px;
       font-size: 2rem;
       animation: bounce 2s infinite;
     }
+
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(10px); }
@@ -147,6 +157,7 @@
       font-size: 1em;
       color: #888;
     }
+
     /* Flex Layout for Events */
     .events-container {
       display: flex;
@@ -216,17 +227,6 @@
     </div>
   </div>
 
-  <div class="nav-menu">
-    <a href="#how-we-met">How We Met</a>
-    <a href="#events">Wedding Events</a>
-    <a href="#venue">Venue</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#rsvp">RSVP</a>
-    <a href="#wheretostay">Where to Stay</a>
-    <a href="#thingstodo">Things to Do</a>
-    <a href="#contacthelp">Contact Us</a>
-  </div>
-
   <div class="hero">
     <img src="img/logo-lg.png" alt="Wedding Logo" class="hero-logo" />
     <div id="countdown">💍 Loading countdown...</div>
@@ -284,6 +284,7 @@
     </div>
   </section>
 
+  <!-- How to Get There Section with Maps -->
   <section id="venue" data-aos="fade-up" style="padding: 40px 20px; background: #fafafa;">
     <h3>How to Get There</h3>
     <p>Join us at our wedding venue and be part of our celebration!</p>
@@ -395,11 +396,6 @@
         });
       });
     });
-    // Function to toggle the menu
-    function toggleMenu() {
-      const menu = document.querySelector('.nav-menu');
-      menu.classList.toggle('show');
-    }
   </script>
 </body>
 </html>
