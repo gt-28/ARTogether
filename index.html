@@ -33,8 +33,10 @@
       letter-spacing: 0.5px;
     }
     .hero {
-      height: 100vh;
-      background: url('img/hero-min.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      background: url('img/hero-min.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
       color: white;
       position: relative;
       display: flex;
@@ -138,6 +140,23 @@
       h3 {
         font-size: 1.8rem;
       }
+      .hero {
+        padding: 40px 10px 30px;
+        background-position: center top;
+        background-size: cover;
+        background-attachment: scroll;
+      }
+      .hero img.hero-logo {
+        max-width: 220px;
+      }
+      iframe {
+        height: 1055px;
+      }
+      .gallery img {
+        flex: 1 1 80%;
+        max-width: 80%;
+      }
+    }
       .hero {
         padding: 40px 10px 30px;
       }
