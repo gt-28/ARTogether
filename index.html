@@ -23,6 +23,7 @@
       background: #fff0f5;
       color: #333;
       text-align: center;
+      scroll-behavior: smooth; /* Smooth scroll effect */
     }
     h3 {
       font-family: 'Playfair Display', serif;
@@ -104,6 +105,13 @@
     }
     section {
       padding: 40px 20px;
+      opacity: 0; /* Start hidden for animation */
+      transform: translateY(20px); /* Start from below */
+      transition: opacity 0.6s, transform 0.6s; /* Smooth transition */
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     #countdown {
       font-size: 1.2em;
@@ -173,12 +181,12 @@
     <div class="down-arrow" style="bottom: 60px;" data-aos="fade-up"><a href="#how-we-met" style="color:white;"><i class="fas fa-angle-down"></i></a></div>
   </div>
 
-  <section data-aos="fade-up">
+  <section data-aos="fade-up" class="visible">
     <h3>A♾️RTOGETHER</h3>
     <p>The dates are 2nd & 3rd of October '25 and we would like you to be a part of it.</p>
   </section>
 
-  <section id="how-we-met" data-aos="fade-left">
+  <section id="how-we-met" data-aos="fade-left" class="visible">
     <h3>💫 How it all began</h3>
     <p>
       It began in 2012, when a boy noticed a girl walking through the college campus just a fleeting moment, a simple crush. But something about her stayed with him. As time passed, that passing glance turned into friendship.<br><br>
@@ -199,19 +207,75 @@
     </div>
   </section>
 
-  <section id="events" data-aos="fade-up">
-    <h3>🌸 Wedding Events</h3>
-    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
-      <ul style="list-style-type: none; padding: 0;">
-        <li><strong>🌼 1st October – Haldi (10AM–12PM):</strong> A colorful and joyous turmeric ceremony to bless the couple with happiness.</li>
-        <li><strong>🎀 1st October – Bride Shower (3:30PM–5PM):</strong> Celebrating the bride with love, laughter, and pre-wedding excitement.</li>
-        <li><strong>💍 2nd October – Wedding (9AM–2PM):</strong> The traditional Hindu ceremony where vows will be exchanged.</li>
-        <li><strong>🎉 3rd October – Reception (6PM–10PM):</strong> An evening of food, music, and celebration with family and friends.</li>
-      </ul>
+<section id="events" data-aos="fade-up" class="visible">
+  <h3>🌸 Wedding Events</h3>
+  <div class="events-container">
+    
+    <!-- Left Side: Mehandi & Pelli Kuthuru -->
+    <div class="event-item">
+      <h4>🌿 Mehandi (3:30PM–5PM)</h4>
+      <p>A vibrant and joyous ceremony where intricate henna designs are applied to the bride and her guests. The **Mehandi** ceremony symbolizes beauty, joy, and good luck as the bride prepares for her new journey.</p>
     </div>
-  </section>
 
-  <section id="gallery" data-aos="fade-left">
+    <div class="event-item">
+      <h4>🪔 Pelli Kuthuru (12PM–1:30PM)</h4>
+      <p>Also known as the Haldi ceremony, **Pelli Kuthuru** involves the bride and groom being smeared with turmeric paste to cleanse and purify them. This ritual brings blessings for prosperity, good health, and happiness as the couple begins their new chapter together.</p>
+    </div>
+
+    <!-- Right Side: Wedding & Reception -->
+    <div class="event-item">
+      <h4>💒 Wedding (9:30AM–2PM)</h4>
+      <p>The most sacred part of the celebrations, the **Wedding** is where the couple exchanges vows in the presence of loved ones. This ceremony binds them in matrimony, symbolizing love, unity, and the commitment to stay together forever.</p>
+    </div>
+
+    <div class="event-item">
+      <h4>💐 Reception (5PM–10PM)</h4>
+      <p>The **Reception** is a joyous event where the newlyweds are celebrated by their families and friends. With food, music, and dancing, this event marks the beginning of their married life and is an occasion to share happiness with everyone.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CSS for Responsive Layout -->
+<style>
+  .events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+
+  .event-item {
+    flex: 0 0 48%; /* Default for larger screens (desktop/tablets) */
+    text-align: left;
+    padding: 20px;
+  }
+
+  /* Media Query for Smaller Screens (Mobile) */
+  @media (max-width: 768px) {
+    .event-item {
+      flex: 0 0 100%; /* Stacks items vertically on smaller screens */
+      margin-bottom: 20px; /* Adds space between stacked sections */
+    }
+  }
+
+  /* Mobile responsiveness: Ensure the layout is responsive on even smaller devices */
+  @media (max-width: 480px) {
+    h4 {
+      font-size: 1.5rem; /* Adjust font size for smaller devices */
+    }
+
+    p {
+      font-size: 1rem; /* Adjust paragraph text size */
+    }
+  }
+</style>
+
+
+
+  <section id="gallery" data-aos="fade-left" class="visible">
     <h3>Our Memories</h3>
     <div class="gallery">
       <img src="img/eng_pics/_D0A8207.jpg" alt="Pic 1">
@@ -220,13 +284,13 @@
     </div>
   </section>
 
-  <section id="hashtag" data-aos="fade-up">
+  <section id="hashtag" data-aos="fade-up" class="visible">
     <h3>A picture is worth a thousand words!</h3>
     <p>Help us capture the moment. Tag your photos with <strong>#ARTogether</strong></p>
     <img src="img/iphone_instagram.jpg" alt="Instagram" style="max-width: 90%; height: auto; border-radius: 10px; margin-top: 20px;">
   </section>
 
-  <section id="rsvp" data-aos="zoom-in">
+  <section id="rsvp" data-aos="zoom-in" class="visible">
     <h3>RSVP</h3>
     <p>We would greatly appreciate if you could RSVP by filling out this form:</p>
     <iframe 
@@ -259,23 +323,21 @@
   </section>
 
   <section id="wheretostay" data-aos="fade-up" style="padding: 40px 20px; background: #fafafa;">
-    <h3>Where to Stay</h3>
-    <p>There are several great accommodation options near the wedding venue, in both Vail and Breckenridge. Here are some suggestions for a comfortable stay:</p>
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h4>🏨 Vail:</h4>
-      <ul>
-        <li><strong>Vail Marriott Mountain Resort:</strong> A luxurious resort offering ski-in/ski-out access, an outdoor pool, and full-service amenities. (Approx. 2 miles from the venue)</li>
-        <li><strong>The Lodge at Vail:</strong> A historic, upscale hotel located in the heart of Vail Village, offering convenience and comfort.</li>
-        <li><strong>Antlers at Vail:</strong> A rustic yet modern property with great views and an outdoor pool, just a short distance from the venue.</li>
-      </ul>
-      <h4>🏨 Breckenridge:</h4>
-      <ul>
-        <li><strong>One Ski Hill Place:</strong> A luxury hotel offering ski-in/ski-out access with spacious suites and a resort-style experience.</li>
-        <li><strong>The Lodge at Breckenridge:</strong> Set at the top of a mountain, this cozy lodge offers incredible views, a relaxed atmosphere, and a fireplace to gather around.</li>
-        <li><strong>Beaver Run Resort:</strong> A popular choice for those wanting ski access and easy access to downtown Breckenridge, with plenty of amenities to enjoy.</li>
-      </ul>
-    </div>
+  <h3>Where to Stay</h3>
+  <p>There are several great accommodation options near the wedding venue in Vail. Here are some suggestions for a comfortable stay:</p>
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h4>🏨 Vail:</h4>
+    <ul>
+      <li><strong>Vail Marriott Mountain Resort:</strong> A luxurious resort offering ski-in/ski-out access, an outdoor pool, and full-service amenities. (Approx. 2 miles, 5-minute drive from the venue)</li>
+      <li><strong>The Lodge at Vail:</strong> A historic, upscale hotel located in the heart of Vail Village, offering convenience and comfort. (Approx. 2 miles, 5-minute drive from the venue)</li>
+      <li><strong>Antlers at Vail:</strong> A rustic yet modern property with great views and an outdoor pool, just a short distance from the venue. (Approx. 1.5 miles, 5-minute drive from the venue)</li>
+      <li><strong>Grand Hyatt Vail:</strong> A luxurious resort with ski-in/ski-out access, a heated outdoor pool, and a full-service spa. (Approx. 3 miles, 7-minute drive from the venue)</li>
+      <li><strong>Residence Inn by Vail:</strong> A convenient and comfortable extended-stay hotel offering spacious suites and easy access to the slopes. (Approx. 3 miles, 7-minute drive from the venue)</li>
+      <li><strong>Highline Vail - A DoubleTree by Hilton:</strong> A welcoming hotel with an outdoor pool, hot tubs, and a great location near Vail Mountain. (Approx. 3 miles, 7-minute drive from the venue)</li>
+    </ul>
+  </div>
   </section>
+
 
   <section id="thingstodo" data-aos="fade-up" style="padding: 40px 20px; background: #fffef5;">
     <h3>Explore Colorado This Fall</h3>
@@ -318,25 +380,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
-    function toggleMenu() {
-      const nav = document.getElementById('navMenu');
-      nav.classList.toggle('show');
-    }
 
-    const countdownDate = new Date("Oct 2, 2025 09:00:00").getTime();
-    const x = setInterval(function () {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const countdownEl = document.getElementById("countdown");
-      if (countdownEl) {
-        countdownEl.innerHTML = `💍 ${days} days to go!`;
-      }
-      if (distance < 0) {
-        clearInterval(x);
-        countdownEl.innerHTML = "💍 It's the big day!";
-      }
-    }, 1000);
+    // Show sections when they enter the viewport
+    window.addEventListener('load', function() {
+      const sections = document.querySelectorAll('section');
+      window.addEventListener('scroll', function() {
+        sections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            section.classList.add('visible');
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
