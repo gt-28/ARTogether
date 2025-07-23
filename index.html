@@ -23,7 +23,7 @@
       background: #fff0f5;
       color: #333;
       text-align: center;
-      scroll-behavior: smooth; /* Smooth scroll effect */
+      scroll-behavior: smooth;
     }
     h3 {
       font-family: 'Playfair Display', serif;
@@ -105,9 +105,9 @@
     }
     section {
       padding: 40px 20px;
-      opacity: 0; /* Start hidden for animation */
-      transform: translateY(20px); /* Start from below */
-      transition: opacity 0.6s, transform 0.6s; /* Smooth transition */
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
     }
     section.visible {
       opacity: 1;
@@ -121,9 +121,12 @@
     iframe {
       border: none;
       width: 100%;
-      max-width: 600px;
-      height: 1055px;
+      height: 400px;
       margin: auto;
+      transition: transform 0.3s ease;
+    }
+    iframe:hover {
+      transform: scale(1.05);
     }
     .gallery {
       display: flex;
@@ -144,7 +147,6 @@
       font-size: 1em;
       color: #888;
     }
-
     /* Flex Layout for Events */
     .events-container {
       display: flex;
@@ -156,11 +158,11 @@
     }
 
     .event-item {
-      flex: 0 0 48%; /* Default for larger screens (desktop/tablets) */
+      flex: 0 0 48%;
       text-align: left;
       padding: 20px;
-      opacity: 0; /* Hidden initially for animation */
-      transform: translateX(-20px); /* Start from the left or right */
+      opacity: 0;
+      transform: translateX(-20px);
       transition: opacity 0.6s, transform 0.6s;
     }
 
@@ -189,14 +191,13 @@
     /* Mobile-Responsive Styles */
     @media (max-width: 768px) {
       .event-item {
-        flex: 0 0 100%; /* Stacks items vertically on smaller screens */
-        margin-bottom: 20px; /* Adds space between stacked sections */
-        opacity: 0; /* Hidden initially for animation */
-        transform: translateX(-20px); /* Start from the left or right */
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateX(-20px);
         transition: opacity 0.6s, transform 0.6s;
       }
 
-      /* Adjusting the mobile slide-in animations */
       .left-slide {
         animation: slideFromLeft 0.8s forwards;
       }
@@ -247,12 +248,9 @@
     </div>
   </section>
 
-  <!-- Wedding Events with Dates and Times -->
   <section id="events" data-aos="fade-up" class="visible">
     <h3>🌸 Wedding Events</h3>
     <div class="events-container">
-    
-      <!-- Left Side: Mehandi & Pelli Kuthuru -->
       <div class="event-item left-slide" data-aos="fade-right" data-aos-delay="200">
         <h4>🌿 Mehandi (1st October - 3:30PM–5PM)</h4>
         <p>A vibrant and joyous ceremony where intricate henna designs are applied to the bride and her guests. The **Mehandi** ceremony symbolizes beauty, joy, and good luck as the bride prepares for her new journey.</p>
@@ -263,7 +261,6 @@
         <p>Also known as the Haldi ceremony, **Pelli Kuthuru** involves the bride and groom being smeared with turmeric paste to cleanse and purify them. This ritual brings blessings for prosperity, good health, and happiness as the couple begins their new chapter together.</p>
       </div>
 
-      <!-- Right Side: Wedding & Reception -->
       <div class="event-item right-slide" data-aos="fade-left" data-aos-delay="600">
         <h4>💒 Wedding (2nd October - 9:30AM–2PM)</h4>
         <p>The most sacred part of the celebrations, the **Wedding** is where the couple exchanges vows in the presence of loved ones. This ceremony binds them in matrimony, symbolizing love, unity, and the commitment to stay together forever.</p>
@@ -273,7 +270,6 @@
         <h4>💐 Reception (3rd October - 5PM–10PM)</h4>
         <p>The **Reception** is a joyous event where the newlyweds are celebrated by their families and friends. With food, music, and dancing, this event marks the beginning of their married life and is an occasion to share happiness with everyone.</p>
       </div>
-
     </div>
   </section>
 
@@ -311,16 +307,11 @@
     <h3>How to Get There</h3>
     <p>Join us at our wedding venue and be part of our celebration!</p>
     <div style="max-width: 800px; margin: 0 auto;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.664018948593!2d-106.41031252234568!3d39.63476820285804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876a7090f831767f%3A0x1cbc9e48db768f00!2sDonovan%20Pavilion!5e0!3m2!1sen!2sus!4v1752878409559!5m2!1sen!2sus" width="100%" height="450" style="border:0; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <div style="margin-top: 30px;">
-      <h4>Need Help Getting There?</h4>
-      <ul style="list-style-type: none; padding: 0;">
-        <li><strong>📍 Address:</strong> Donovan Pavilion, 1600 S Frontage Rd W, Vail, CO 81657</li>
-        <li><strong>🚗 Driving from Denver:</strong> Take I-70 W for ~2 hours. Exit at 176, turn left onto S Frontage Rd W.</li>
-        <li><strong>✈️ Nearest Airport:</strong> Eagle County Regional Airport (EGE) is 35 minutes away.</li>
-        <li><strong>🚌 Shuttle Services:</strong> Colorado Mountain Express and Epic Mountain Express provide frequent shuttles from Denver and EGE.</li>
-      </ul>
+      <h4>Wedding Venue: Donovan Pavilion</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.664018948593!2d-106.41031252234568!3d39.63476820285804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876a7090f831767f%3A0x1cbc9e48db768f00!2sDonovan%20Pavilion!5e0!3m2!1sen!2sus!4v1752878409559!5m2!1sen!2sus" width="100%" height="400" style="border:0; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      <h4>Reception Venue: EagleVail Pavilion</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6146.655636278986!2d-106.481087923322!3d39.61982210375503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876a777afe00496b%3A0x839abec546b8c793!2sEagleVail%20Pavilion!5e0!3m2!1sen!2sus!4v1753294603832!5m2!1sen!2sus" width="100%" height="400" style="border:0; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 
@@ -381,7 +372,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
-
     // Show sections when they enter the viewport
     window.addEventListener('load', function() {
       const sections = document.querySelectorAll('section');
