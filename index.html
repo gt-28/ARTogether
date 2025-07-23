@@ -144,25 +144,65 @@
       font-size: 1em;
       color: #888;
     }
+
+    /* Flex Layout for Events */
+    .events-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      margin: 0 auto;
+      max-width: 1100px;
+    }
+
+    .event-item {
+      flex: 0 0 48%; /* Default for larger screens (desktop/tablets) */
+      text-align: left;
+      padding: 20px;
+      opacity: 0; /* Hidden initially for animation */
+      transform: translateX(-20px); /* Start from the left or right */
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    /* Animations for Left-Slide (Mobile & Desktop) */
+    .left-slide {
+      animation: slideFromLeft 0.8s forwards;
+    }
+
+    /* Animations for Right-Slide (Mobile & Desktop) */
+    .right-slide {
+      animation: slideFromRight 0.8s forwards;
+    }
+
+    /* Left-Slide Animation */
+    @keyframes slideFromLeft {
+      0% { transform: translateX(-20px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Right-Slide Animation */
+    @keyframes slideFromRight {
+      0% { transform: translateX(20px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Mobile-Responsive Styles */
     @media (max-width: 768px) {
-      h3 {
-        font-size: 1.8rem;
+      .event-item {
+        flex: 0 0 100%; /* Stacks items vertically on smaller screens */
+        margin-bottom: 20px; /* Adds space between stacked sections */
+        opacity: 0; /* Hidden initially for animation */
+        transform: translateX(-20px); /* Start from the left or right */
+        transition: opacity 0.6s, transform 0.6s;
       }
-      .hero {
-        padding: 40px 10px 30px;
-        background-position: center top;
-        background-size: cover;
-        background-attachment: scroll;
+
+      /* Adjusting the mobile slide-in animations */
+      .left-slide {
+        animation: slideFromLeft 0.8s forwards;
       }
-      .hero img.hero-logo {
-        max-width: 220px;
-      }
-      iframe {
-        height: 1055px;
-      }
-      .gallery img {
-        flex: 1 1 80%;
-        max-width: 80%;
+
+      .right-slide {
+        animation: slideFromRight 0.8s forwards;
       }
     }
   </style>
@@ -207,73 +247,35 @@
     </div>
   </section>
 
-<section id="events" data-aos="fade-up" class="visible">
-  <h3>🌸 Wedding Events</h3>
-  <div class="events-container">
+  <!-- Wedding Events with Dates and Times -->
+  <section id="events" data-aos="fade-up" class="visible">
+    <h3>🌸 Wedding Events</h3>
+    <div class="events-container">
     
-    <!-- Left Side: Mehandi & Pelli Kuthuru -->
-    <div class="event-item">
-      <h4>🌿 Mehandi (3:30PM–5PM)</h4>
-      <p>A vibrant and joyous ceremony where intricate henna designs are applied to the bride and her guests. The **Mehandi** ceremony symbolizes beauty, joy, and good luck as the bride prepares for her new journey.</p>
+      <!-- Left Side: Mehandi & Pelli Kuthuru -->
+      <div class="event-item left-slide" data-aos="fade-right" data-aos-delay="200">
+        <h4>🌿 Mehandi (1st October - 3:30PM–5PM)</h4>
+        <p>A vibrant and joyous ceremony where intricate henna designs are applied to the bride and her guests. The **Mehandi** ceremony symbolizes beauty, joy, and good luck as the bride prepares for her new journey.</p>
+      </div>
+
+      <div class="event-item left-slide" data-aos="fade-right" data-aos-delay="400">
+        <h4>🪔 Pelli Kuthuru (1st October - 12PM–1:30PM)</h4>
+        <p>Also known as the Haldi ceremony, **Pelli Kuthuru** involves the bride and groom being smeared with turmeric paste to cleanse and purify them. This ritual brings blessings for prosperity, good health, and happiness as the couple begins their new chapter together.</p>
+      </div>
+
+      <!-- Right Side: Wedding & Reception -->
+      <div class="event-item right-slide" data-aos="fade-left" data-aos-delay="600">
+        <h4>💒 Wedding (2nd October - 9:30AM–2PM)</h4>
+        <p>The most sacred part of the celebrations, the **Wedding** is where the couple exchanges vows in the presence of loved ones. This ceremony binds them in matrimony, symbolizing love, unity, and the commitment to stay together forever.</p>
+      </div>
+
+      <div class="event-item right-slide" data-aos="fade-left" data-aos-delay="800">
+        <h4>💐 Reception (3rd October - 5PM–10PM)</h4>
+        <p>The **Reception** is a joyous event where the newlyweds are celebrated by their families and friends. With food, music, and dancing, this event marks the beginning of their married life and is an occasion to share happiness with everyone.</p>
+      </div>
+
     </div>
-
-    <div class="event-item">
-      <h4>🪔 Pelli Kuthuru (12PM–1:30PM)</h4>
-      <p>Also known as the Haldi ceremony, **Pelli Kuthuru** involves the bride and groom being smeared with turmeric paste to cleanse and purify them. This ritual brings blessings for prosperity, good health, and happiness as the couple begins their new chapter together.</p>
-    </div>
-
-    <!-- Right Side: Wedding & Reception -->
-    <div class="event-item">
-      <h4>💒 Wedding (9:30AM–2PM)</h4>
-      <p>The most sacred part of the celebrations, the **Wedding** is where the couple exchanges vows in the presence of loved ones. This ceremony binds them in matrimony, symbolizing love, unity, and the commitment to stay together forever.</p>
-    </div>
-
-    <div class="event-item">
-      <h4>💐 Reception (5PM–10PM)</h4>
-      <p>The **Reception** is a joyous event where the newlyweds are celebrated by their families and friends. With food, music, and dancing, this event marks the beginning of their married life and is an occasion to share happiness with everyone.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- CSS for Responsive Layout -->
-<style>
-  .events-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    margin: 0 auto;
-    max-width: 1100px;
-  }
-
-  .event-item {
-    flex: 0 0 48%; /* Default for larger screens (desktop/tablets) */
-    text-align: left;
-    padding: 20px;
-  }
-
-  /* Media Query for Smaller Screens (Mobile) */
-  @media (max-width: 768px) {
-    .event-item {
-      flex: 0 0 100%; /* Stacks items vertically on smaller screens */
-      margin-bottom: 20px; /* Adds space between stacked sections */
-    }
-  }
-
-  /* Mobile responsiveness: Ensure the layout is responsive on even smaller devices */
-  @media (max-width: 480px) {
-    h4 {
-      font-size: 1.5rem; /* Adjust font size for smaller devices */
-    }
-
-    p {
-      font-size: 1rem; /* Adjust paragraph text size */
-    }
-  }
-</style>
-
-
+  </section>
 
   <section id="gallery" data-aos="fade-left" class="visible">
     <h3>Our Memories</h3>
@@ -323,21 +325,20 @@
   </section>
 
   <section id="wheretostay" data-aos="fade-up" style="padding: 40px 20px; background: #fafafa;">
-  <h3>Where to Stay</h3>
-  <p>There are several great accommodation options near the wedding venue in Vail. Here are some suggestions for a comfortable stay:</p>
-  <div style="max-width: 800px; margin: 0 auto;">
-    <h4>🏨 Vail:</h4>
-    <ul>
-      <li><strong>Vail Marriott Mountain Resort:</strong> A luxurious resort offering ski-in/ski-out access, an outdoor pool, and full-service amenities. (Approx. 2 miles, 5-minute drive from the venue)</li>
-      <li><strong>The Lodge at Vail:</strong> A historic, upscale hotel located in the heart of Vail Village, offering convenience and comfort. (Approx. 2 miles, 5-minute drive from the venue)</li>
-      <li><strong>Antlers at Vail:</strong> A rustic yet modern property with great views and an outdoor pool, just a short distance from the venue. (Approx. 1.5 miles, 5-minute drive from the venue)</li>
-      <li><strong>Grand Hyatt Vail:</strong> A luxurious resort with ski-in/ski-out access, a heated outdoor pool, and a full-service spa. (Approx. 3 miles, 7-minute drive from the venue)</li>
-      <li><strong>Residence Inn by Vail:</strong> A convenient and comfortable extended-stay hotel offering spacious suites and easy access to the slopes. (Approx. 3 miles, 7-minute drive from the venue)</li>
-      <li><strong>Highline Vail - A DoubleTree by Hilton:</strong> A welcoming hotel with an outdoor pool, hot tubs, and a great location near Vail Mountain. (Approx. 3 miles, 7-minute drive from the venue)</li>
-    </ul>
-  </div>
+    <h3>Where to Stay</h3>
+    <p>There are several great accommodation options near the wedding venue in Vail. Here are some suggestions for a comfortable stay:</p>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h4>🏨 Vail:</h4>
+      <ul>
+        <li><strong>Vail Marriott Mountain Resort:</strong> A luxurious resort offering ski-in/ski-out access, an outdoor pool, and full-service amenities. (Approx. 2 miles, 5-minute drive from the venue)</li>
+        <li><strong>The Lodge at Vail:</strong> A historic, upscale hotel located in the heart of Vail Village, offering convenience and comfort. (Approx. 2 miles, 5-minute drive from the venue)</li>
+        <li><strong>Antlers at Vail:</strong> A rustic yet modern property with great views and an outdoor pool, just a short distance from the venue. (Approx. 1.5 miles, 5-minute drive from the venue)</li>
+        <li><strong>Grand Hyatt Vail:</strong> A luxurious resort with ski-in/ski-out access, a heated outdoor pool, and a full-service spa. (Approx. 3 miles, 7-minute drive from the venue)</li>
+        <li><strong>Residence Inn by Vail:</strong> A convenient and comfortable extended-stay hotel offering spacious suites and easy access to the slopes. (Approx. 3 miles, 7-minute drive from the venue)</li>
+        <li><strong>Highline Vail - A DoubleTree by Hilton:</strong> A welcoming hotel with an outdoor pool, hot tubs, and a great location near Vail Mountain. (Approx. 3 miles, 7-minute drive from the venue)</li>
+      </ul>
+    </div>
   </section>
-
 
   <section id="thingstodo" data-aos="fade-up" style="padding: 40px 20px; background: #fffef5;">
     <h3>Explore Colorado This Fall</h3>
