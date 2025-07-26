@@ -158,7 +158,6 @@
       color: #888;
     }
 
-    /* Flex Layout for Events */
     .events-container {
       display: flex;
       flex-wrap: wrap;
@@ -177,29 +176,24 @@
       transition: opacity 0.6s, transform 0.6s;
     }
 
-    /* Animations for Left-Slide (Mobile & Desktop) */
     .left-slide {
       animation: slideFromLeft 0.8s forwards;
     }
 
-    /* Animations for Right-Slide (Mobile & Desktop) */
     .right-slide {
       animation: slideFromRight 0.8s forwards;
     }
 
-    /* Left-Slide Animation */
     @keyframes slideFromLeft {
       0% { transform: translateX(-20px); opacity: 0; }
       100% { transform: translateX(0); opacity: 1; }
     }
 
-    /* Right-Slide Animation */
     @keyframes slideFromRight {
       0% { transform: translateX(20px); opacity: 0; }
       100% { transform: translateX(0); opacity: 1; }
     }
 
-    /* Mobile-Responsive Styles */
     @media (max-width: 768px) {
       .event-item {
         flex: 0 0 100%;
@@ -384,18 +378,34 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
-    // Show sections when they enter the viewport
-    window.addEventListener('load', function() {
-      const sections = document.querySelectorAll('section');
-      window.addEventListener('scroll', function() {
-        sections.forEach(section => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            section.classList.add('visible');
-          }
-        });
-      });
-    });
+
+    // Countdown Timer
+    function updateCountdown() {
+      const weddingDate = new Date("October 2, 2025 09:30:00").getTime();
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = `
+        💍 ${days}d ${hours}h ${minutes}m ${seconds}s
+      `;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "The Wedding Has Arrived!";
+      }
+    }
+    
+    setInterval(updateCountdown, 1000);
+
+    // Hamburger Menu Toggle
+    function toggleMenu() {
+      const menu = document.querySelector('.nav-menu');
+      menu.classList.toggle('show');
+    }
   </script>
 </body>
 </html>
