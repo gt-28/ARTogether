@@ -162,7 +162,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 30px;
+      gap: 15px;
       margin: 0 auto;
       max-width: 1100px;
     }
@@ -219,6 +219,18 @@
     <div class="menu-toggle" onclick="toggleMenu()">
       <i class="fas fa-bars"></i>
     </div>
+
+    <div class="nav-menu">
+      <a href="#how-we-met">How We Met</a>
+      <a href="#events">Events</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#hashtag">Hashtag</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#venue">Venue</a>
+      <a href="#wheretostay">Where to Stay</a>
+      <a href="#thingstodo">Things to Do</a>
+      <a href="#contacthelp">Contact</a>
+    </div>
   </div>
 
   <div class="hero">
@@ -256,27 +268,38 @@
   <section id="events" data-aos="fade-up" class="visible">
     <h3>💍 Wedding Events 👩🏻‍❤️‍👨🏻</h3>
 
-      <div class="event-item left-slide" data-aos="fade-right" data-aos-delay="400">
-        <h4>👰🏻‍♀️ Pelli Kuthuru (1st October - 12PM–1:30PM)</h4>
-        <p>Also known as the Haldi ceremony, **Pelli Kuthuru** involves the bride and groom being smeared with turmeric paste to cleanse and purify them. This ritual brings blessings for prosperity, good health, and happiness as the couple begins their new chapter together.</p>
+    <div class="events-container"></div>
+      <div class="event-item left-slide" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1200" data-aos-easing="ease-in-out" data-aos-once="true">
+        <h4 style="animation: pulse 1.2s 1;">👰🏻‍♀️ Pelli Kuthuru (1st October - 12PM–1:30PM)</h4>
+        <p style="animation: fadeInUp 1.2s 0.3s 1;">Also known as the Haldi ceremony, <strong>Pelli Kuthuru</strong> involves the bride and groom being smeared with turmeric paste to cleanse and purify them. This ritual brings blessings for prosperity, good health, and happiness as the couple begins their new chapter together.</p>
       </div>
 
-      <div class="events-container">
-      <div class="event-item left-slide" data-aos="fade-right" data-aos-delay="200">
-        <h4>🌿 Mehandi (1st October - 3:30PM–5PM)</h4>
-        <p>A vibrant and joyous ceremony where intricate henna designs are applied to the bride and her guests. The **Mehandi** ceremony symbolizes beauty, joy, and good luck as the bride prepares for her new journey.</p>
+      <div class="event-item left-slide" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1200" data-aos-easing="ease-in-out" data-aos-once="true">
+        <h4 style="animation: pulse 1.2s 1;">🌿 Mehandi (1st October - 3:30PM–5PM)</h4>
+        <p style="animation: fadeInUp 1.2s 0.3s 1;">A vibrant and joyous ceremony where intricate henna designs are applied to the bride and her guests. The <strong>Mehandi</strong> ceremony symbolizes beauty, joy, and good luck as the bride prepares for her new journey.</p>
       </div>
 
-      <div class="event-item right-slide" data-aos="fade-left" data-aos-delay="600">
-        <h4>💒 Wedding (2nd October - 9:30AM–2PM)</h4>
-        <p>The most sacred part of the celebrations, the **Wedding** is where the couple exchanges vows in the presence of loved ones. This ceremony binds them in matrimony, symbolizing love, unity, and the commitment to stay together forever.</p>
+      <div class="event-item right-slide" data-aos="flip-left" data-aos-delay="600" data-aos-duration="1200" data-aos-easing="ease-in-out" data-aos-once="true">
+        <h4 style="animation: pulse 1.2s 1;">💒 Wedding (2nd October - 9:30AM–2PM)</h4>
+        <p style="animation: fadeInUp 1.2s 0.3s 1;">The most sacred part of the celebrations, the <strong>Wedding</strong> is where the couple exchanges vows in the presence of loved ones. This ceremony binds them in matrimony, symbolizing love, unity, and the commitment to stay together forever.</p>
       </div>
 
-      <div class="event-item right-slide" data-aos="fade-left" data-aos-delay="800">
-        <h4>💐 Reception (3rd October - 5PM–10PM)</h4>
-        <p>The **Reception** is a joyous event where the newlyweds are celebrated by their families and friends. With food, music, and dancing, this event marks the beginning of their married life and is an occasion to share happiness with everyone.</p>
+      <div class="event-item right-slide" data-aos="flip-up" data-aos-delay="800" data-aos-duration="1200" data-aos-easing="ease-in-out" data-aos-once="true">
+        <h4 style="animation: pulse 1.2s 1;">💐 Reception (3rd October - 5PM–10PM)</h4>
+        <p style="animation: fadeInUp 1.2s 0.3s 1;">The <strong>Reception</strong> is a joyous event where the newlyweds are celebrated by their families and friends. With food, music, and dancing, this event marks the beginning of their married life and is an occasion to share happiness with everyone.</p>
       </div>
     </div>
+    <style>
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    </style>
   </section>
 
   <section id="gallery" data-aos="fade-left" class="visible">
@@ -391,7 +414,6 @@
       const weddingDate = new Date("October 2, 2025 09:30:00").getTime();
       const now = new Date().getTime();
       const distance = weddingDate - now;
-      
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -407,6 +429,12 @@
     }
 
     setInterval(updateCountdown, 1000);
+
+    // Scroll to Section
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
 
     // Hamburger Menu Toggle
     function toggleMenu() {
